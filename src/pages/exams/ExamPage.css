@@ -1,0 +1,45 @@
+.exams-page {
+    flex: 1; /* all elements in the container should take all the available space */
+    position: relative; /* Position the container relatively */
+    overflow: auto; /* alloes the content to overflow when the content overflows */
+    z-index: 10; /* Allows the container be on top of othe alements in the page */
+}
+
+
+.exams-main-container {
+    max-width: 1200px; /* Width should not exceed 1200 pixels */
+    margin: 0 auto; /* No margin at the top and bottom, position elements at the center (auto) */
+    padding: 16px
+}
+
+/* stats grid */
+.exams-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.exams-grid-grade-and-timer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+.exams-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-bottom: 32px;
+}
+
+
+@media (min-width: 1024px) {
+    .exams-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+

@@ -1,0 +1,23 @@
+.assignments-page {
+    flex: 1; /* All the content to take all the available space */
+    position: relative; /* position It relatively */
+    overflow: auto; /* overflow-auto: shows scrollbars when content overflows */
+    z-index: 10 /* Page to be on top of other elements */
+}
+
+
+.main-assignments-container {
+    max-width: 1200px; /* should not exceed 1200px */
+    margin: 0 auto; /* Top to botton 0 and center all elements */
+    padding: 16px;
+}
+
+
+.assignments-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 32px;
+}
+
+

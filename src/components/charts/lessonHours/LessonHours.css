@@ -1,0 +1,23 @@
+.lesson-hours-container {
+    background-color: rgba(31, 41, 55, 0.5);
+    backdrop-filter: blur(4px);
+    box-shadow: 0px 4px 6px rgba(0, 0 ,0, 0.1);
+    border-radius: 12px;
+    padding: 24px;
+    border: 1px solid #374151;
+}
+
+
+.lesson-hours-title {
+    font-size: 1.125rem;
+    font-weight: 500;
+    margin-bottom: 16px;
+    color: #f3f4f6;
+}
+
+.lesson-hours-chart-container {
+    height: 20rem;
+}
+
+
+

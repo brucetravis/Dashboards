@@ -1,0 +1,27 @@
+.attendance-page {
+    /* All elements in the page should take all the available space */
+    flex: 1; 
+
+    /* Shows scroll bars when content overflows */
+    overflow: auto; 
+    
+    /* Positions the elements relatively */
+    position: relative;
+
+    /* Places elements on top of another */
+    z-index: 10
+}
+
+.attendace-main-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px
+}
+
+
+.attendance-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 32px;
+}

@@ -1,0 +1,95 @@
+.sidebar-container {
+    position: relative; /* Ensure the sidebar is positioned correctly */
+    z-index: 10; /* Position the sidebar on top of everything */
+    transition: all 300ms ease-in-out; /* smooth;y animates width changes */
+    flex-shrink: 0; /* Do not shrink no matter what  even If the screen size changes, remain the same */
+}
+
+/* When the sidenar is open (256px = 16rem) */
+.sidebar-open {
+    width: 256px;
+}
+
+/* When teh sidebar is closed (80px = 5rem) */
+.sidebar-closed {
+    width: 80px;
+}
+
+.sidebar-inner {
+    height: 100%; /* Makes the sidebar take up the full height of the page/ It's parent */
+    background-color: rgba(31, 41, 55, 0.5); 
+    backdrop-filter: blur(4px); /* Creates a blur effect behind the sidebar elements. The vaue determines how blurred It will be */
+    -webkit-backdrop-filter: blur(4px); /* safari support for older versions */
+    padding: 1rem; /* padding of 16 pixels inside the sidebar */
+    display: flex; /* Turns or makes the sidebar-inner a flex container */
+    flex-direction: column; /* Ensures that child elements (menu Items, buttons (etc) are stacked vertically */
+    border-right: 1px solid #374151; /* Adds a thin border to the right side of the side bar */
+}
+
+.sidebar-button {
+    padding: 0.5rem; /* Adds a spacing inside the sidebar */
+    border-radius: 9999px; /* Makes the sidebar fuly circular */
+    max-width: fit-content; /* Makes a button as wide only as It's content */
+    transition: background-color 0.3s ease; /* smooth transition when hovered */
+    background: none; /* Nno background color by default */
+    border: none; /* Removes the default border */
+    cursor: pointer; /* Changes the mouse pointer to indicate clickability */
+}
+
+/* Hover Effect */
+.sidebar-button:hover {
+    background-color: #374151; /* Changes tha bakcground to dark gray when hovered */
+}
+
+.menu-icon {
+    color: white;
+}
+
+
+.sidebar-nav {
+    margin-top: 2rem; /* 32 pixels from the top */
+    flex-grow: 1; /* Ensures the navigation sidebar fills any available space insude the sidebar container */
+}
+
+.sidebar-nav a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    transition: transform 0.5s ease;
+}
+
+.sidebar-nav a:hover {
+    transform: scale(0.9);
+}
+
+.sidebar-nav-item {
+    display: flex; /* flex container */
+    align-items: center; /* centers them vertically */
+    padding: 1rem; /*paddding of 16px */
+    /* font-size: 0.675rem; */
+    font-size: 0.795rem;
+    font-weight: 500;
+    border-radius: 0.5rem;
+    margin-bottom: 0.5rem;
+    transition: background-color 0.3 ease, transform 0.5 ease;
+    cursor: pointer;
+}
+
+/* Hover state for the navigation Item */
+.sidebar-nav-item:hover {
+    background-color: #374151;
+    transform: scale(1.1); /* Increase in size by 10% */
+}
+
+/* Spacing for the  names in the array */
+.sidebar-nav-item span {
+    margin-left: 1rem;
+}
+
+.animated-span {
+    margin-left: 1rem;
+    white-space: nowrap;
+}
+
+
+

@@ -1,0 +1,103 @@
+/* General Calendar Container */
+.calendar {
+  width: 100%; /* Ensure calendar takes up full width of its parent container */
+  max-width: 100%; /* Prevent it from exceeding the grid container's width */
+  font-family: 'Arial', sans-serif;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  box-sizing: border-box; /* Include padding in the width calculation */
+  overflow: hidden; /* Prevent overflow */
+}
+
+/* Header Section with Month and Navigation Buttons */
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.calendar-header button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 5px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.calendar-header button:hover {
+  background-color: #45a049;
+}
+
+.calendar-header span {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* Weekday Labels */
+.weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.weekdays div {
+  padding: 10px;
+  color: #555;
+}
+
+/* Grid of Days */
+.days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+}
+
+.day {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 16px;
+}
+
+.day:hover {
+  background-color: #f1f1f1;
+}
+
+.empty {
+  background-color: transparent;
+}
+
+/* Highlight the current day */
+.day.current-day {
+  background-color: #4CAF50;
+  color: white;
+  font-weight: bold;
+}
+
+/* Add responsiveness for mobile */
+@media (max-width: 500px) {
+  .calendar {
+    padding: 15px;
+  }
+
+  .calendar-header span {
+    font-size: 16px;
+  }
+
+  .day {
+    padding: 10px;
+    font-size: 14px;
+  }
+}

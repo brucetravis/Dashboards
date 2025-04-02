@@ -1,0 +1,47 @@
+.timetable-page {
+    /* flex: 1 allows all elements in the div to grow and filll up any available space */
+    flex: 1;
+
+    /* Overflow: auto; shows scrollbars when the content overflows */
+    overflow: auto;
+
+    /* position: relative; Positions elements relative to the normal position */
+    position: relative;
+
+    /* z-index: 10; allows elements to be at the top of others */
+    z-index: 10;
+}
+
+
+.main-timetable-container {
+   max-width: 1200px; /* width should not exceed 1200 pixels */
+   margin: 0 auto; /* No margin at the top and the bottom(0) and center the elements horizontally (auto) */
+   padding: 16px;
+}
+
+/* Stat Grid */
+.timetable-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+
+/* Charts grid */
+.timetable-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-bottom: 32px;
+}
+
+
+@media (min-width: 1024px) {
+    .timetable-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+

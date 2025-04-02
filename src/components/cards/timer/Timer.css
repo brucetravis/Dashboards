@@ -1,0 +1,25 @@
+.clock-container {
+    background-color: rgba(31, 41, 55, 0.5);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    border: 1px solid #4b5563;
+    padding: 16px;
+    overflow: hidden;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+.clock-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+
+
+.timer-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: #d1d5db;
+}
+

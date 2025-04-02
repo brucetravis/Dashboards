@@ -1,0 +1,104 @@
+.exam-table-container {
+    background-color: rgba(31, 41, 55, 0.8);
+    backdrop-filter: blur(10px);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 12px;
+    padding: 16px;
+    border: 1px solid #374151;
+    margin-bottom: 32px;
+}
+
+.exam-table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.exams-table-title {
+    font-size: 1.25rem; /* size of the text */
+    font-weight: 600; /* weight of the text */
+    color: #f3f4f6; /* Coor of the text */
+}
+
+.exams-search-container {
+    position: relative;
+}
+
+.exam-search-input {
+    background-color: #374151;
+    color: white;
+    padding: 8px 16px;
+    padding-left: 40px;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    transition: 0.3s;
+}
+
+.exam-search-input::placeholder {
+    color: #9ca3af;
+}
+
+.exam-search-input:focus {
+    border: 2px solid #3b82f6;
+}
+
+
+.exams-search-icon {
+    position: absolute;
+    left: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9ca3af
+}
+
+
+.exam-table-container-content {
+    overflow-x: auto;
+    background-color: rgba(31, 41, 55, 0.8);
+    backdrop-filter: blur(10px);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 12px;
+    padding: 16px;
+    border: 1px solid #374151;
+    margin-bottom: 32px;
+}
+
+.exam-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+
+.exam-table thead {
+    background-color: transparent;
+}
+
+.exam-table th {
+    padding: 12px 24px;
+    text-align: left;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: #9ca3af;
+    border-bottom: 1px solid #374151;
+}
+
+.exam-table tbody tr {
+    transition: background-color 0.3s;
+}
+
+
+.exam-table tbody tr:hover {
+    background-color: rgba(55, 65, 82, 0.2);
+    cursor: pointer;
+}
+.exam-table tbody td {
+    padding: 16px 24px;
+    font-size: 14px;
+    color: #d1d5db;
+    white-space: nowrap;
+}
+
+
