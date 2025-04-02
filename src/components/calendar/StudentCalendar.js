@@ -1,68 +1,50 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import './StudentCalendar.css';
 
-export default function StudentCalendar() {
+export default function Calendar() {
   const [currentDate, setCurrentDate] = useState(new Date());
-  
-  // Get the current month and year
-  const currentMonth = currentDate.getMonth();
-  const currentYear = currentDate.getFullYear();
-  
-  // Get the first day of the current month and how many days in the month
-  const firstDayOfMonth = new Date(currentYear, currentMonth, 1).getDay();
-  const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+  const [selectedDate, setSelectedDate] = useState(new Date().getDate());
 
-  // Create an array of days to display
-  const days = Array.from({ length: daysInMonth }, (_, index) => index + 1);
+  const year = currentDate.getFullYear();
+  const month = currentDate.getMonth();
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
 
-  // Handle month change
-  const handleMonthChange = (direction) => {
-    setCurrentDate(prevDate => {
-      const newDate = new Date(prevDate);
-      if (direction === 'next') {
-        newDate.setMonth(newDate.getMonth() + 1);
-      } else if (direction === 'prev') {
-        newDate.setMonth(newDate.getMonth() - 1);
-      }
-      return newDate;
-    });
+  const handleMonthChange = (offset) => {
+    const newDate = new Date(year, month + offset, 1);
+    setCurrentDate(newDate);
+    setSelectedDate(newDate.getMonth() === new Date().getMonth() ? new Date().getDate() : null);
   };
 
   return (
-    <div className="calendar">
-      <div className="calendar-header">
-        <button onClick={() => handleMonthChange('prev')}>Previous</button>
-        <span>{`${currentDate.toLocaleString('default', { month: 'long' })} ${currentYear}`}</span>
-        <button onClick={() => handleMonthChange('next')}>Next</button>
+    <motion.div
+      className='calendar-container'
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.3 }}
+    >
+      <h2 className='calendar-title'>Student Calendar</h2>
+      <div className='calendar-header'>
+        <button onClick={() => handleMonthChange(-1)}>&lt;</button>
+        <h2 className='calendar-month'>{currentDate.toLocaleString('default', { month: 'long' })} {year}</h2>
+        <button onClick={() => handleMonthChange(1)}>&gt;</button>
       </div>
-
-      <div className="calendar-grid">
-        {/* Render the day names */}
-        <div className="weekdays">
-          <div>Sun</div>
-          <div>Mon</div>
-          <div>Tue</div>
-          <div>Wed</div>
-          <div>Thu</div>
-          <div>Fri</div>
-          <div>Sat</div>
-        </div>
-
-        {/* Render the days */}
-        <div className="days">
-          {/* Empty divs for days before the first day of the month */}
-          {Array.from({ length: firstDayOfMonth }, (_, index) => (
-            <div key={index} className="empty"></div>
-          ))}
-          
-          {days.map(day => (
-            <div key={day} className="day">
+      <div className='calendar-grid'>
+        {[...Array(daysInMonth)].map((_, index) => {
+          const day = index + 1;
+          return (
+            <motion.div
+              key={day}
+              className={`calendar-day ${day === selectedDate ? 'selected' : ''}`}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              onClick={() => setSelectedDate(day)}
+            >
               {day}
-            </div>
-          ))}
-        </div>
+            </motion.div>
+          );
+        })}
       </div>
-    </div>
+    </motion.div>
   );
 };
-
-

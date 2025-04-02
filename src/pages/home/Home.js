@@ -10,7 +10,7 @@ import ExamsGraph from '../../components/graphs/examsgraph/ExamsGraph';
 import LessonHours from '../../components/charts/lessonHours/LessonHours';
 import AssignmentsTable from '../../components/tables/assignmentstable/AssignmentsTable';
 import AttendanceGraph from '../../components/graphs/attendancegraph/AttendanceGraph';
-// import StudentCalendar from '../../components/calendar/StudentCalendar'
+import StudentCalendar from '../../components/calendar/StudentCalendar'
 
 export default function Home() {
   
@@ -36,7 +36,7 @@ export default function Home() {
         {/* Charts */}
         <div className='home-charts-grid'>
           <AttendanceGraph />
-          {/* <StudentCalendar /> */}
+          <StudentCalendar />
         </div>
         
         <Timetable />
