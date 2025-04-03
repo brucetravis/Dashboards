@@ -138,24 +138,39 @@
 }
 
 .completed-btn.completed {
-    background-color: #FFA500;
+    background-color: #205572;
 }
 
 .completed-btn.completed:hover {
-    background-color: #dd9206;
+    background-color: #09415f;
 }
 
 
 .assignment-btn.submit {
     background-color: #00A9E0;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.assignment-btn.submit:hover {
+    background-color: #0b8cb8;
 }
 
 .download-btn.download {
-    background-color: #FFD700;
+    background-color: #e9c80c;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.download-btn.download:hover {
+    background-color: #b39b13;
 }
 
 .completed-btn.complete {
-    background-color: #D1D3D4;
+    background-color: #5f8396;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.completed-btn.complete:hover {
+    background-color: #406b81;
 }
 
 .assignment-btn.submit:hover,
