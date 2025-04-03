@@ -1,10 +1,9 @@
-import React, { useState } from 'react'
-import './AssignmentsTable.css'
-import { motion } from 'framer-motion'
-import { Search } from 'lucide-react';
+import React, { useState } from "react";
+import "./AssignmentsTable.css";
+import { motion } from "framer-motion";
+import { Search } from "lucide-react";
 
 export default function AssignmentsTable() {
-  
   const assignmentsList = [
     { id: 1, subject: "Math", title: "Algebra Practice", dueDate: "2024-04-01", status: "Pending", score: "-" },
     { id: 2, subject: "English", title: "Essay on Wildlife", dueDate: "2024-04-03", status: "Submitted", score: "-" },
@@ -16,68 +15,68 @@ export default function AssignmentsTable() {
     { id: 8, subject: "Art & Craft", title: "Draw a Landscape", dueDate: "2024-04-15", status: "Submitted", score: "-" },
     { id: 9, subject: "Music", title: "Write a Song Verse", dueDate: "2024-04-17", status: "Graded", score: "88%" }
   ];
-  
-  // State to handle the connection buttons
-  const [ handledAssignments, setHandledAssignments ] = useState([
-    {
-      id: 1,
-      submitted: true,
-      downloaded: true,
-      completed: true
-    },
-  ]);
-  
+
+  // Initialize handledAssignments state per assignment
+  const [handledAssignments, setHandledAssignments] = useState(
+    assignmentsList.reduce((acc, assignment) => {
+      acc[assignment.id] = { submitted: false, downloaded: false, completed: false };
+      return acc;
+    }, {})
+  );
+
+  // Function to toggle button states
+  const toggleAssignmentStatus = (id, type) => {
+    setHandledAssignments((prev) => ({
+      ...prev,
+      [id]: { ...prev[id], [type]: !prev[id][type] }
+    }));
+  };
+
   // State to handle the search
-  const [ searchTerm, setSearchTerm ] = useState("")
-  // state to handle the filtering Logic
-  const [ isFiltered, setFiltered ] = useState(assignmentsList) 
+  const [searchTerm, setSearchTerm] = useState("");
+  // State to handle the filtering logic
+  const [isFiltered, setFiltered] = useState(assignmentsList);
 
-
-  // functio to handle the search logic
+  // Function to handle the search logic
   const handleSearch = (e) => {
-    const term = e.target.value.toLowerCase()
-    // function to update the search term to the latest search
-    setSearchTerm(term)
-    
+    const term = e.target.value.toLowerCase();
+    setSearchTerm(term);
 
-    // function to handle the filterinig logic
     const filtered = assignmentsList.filter(
-      (assignment) => 
-        assignment.subject.toLowerCase().includes(term) || 
+      (assignment) =>
+        assignment.subject.toLowerCase().includes(term) ||
         assignment.title.toLowerCase().includes(term) ||
         assignment.dueDate.includes(term) ||
         assignment.status.toLowerCase().includes(term) ||
         assignment.score.includes(term)
-    )
+    );
 
-    // Update the function to the latest filtered terms
-    setFiltered(filtered)
-  }
-  
+    setFiltered(filtered);
+  };
+
   return (
     <motion.div
-      className='assignments-table-container'
+      className="assignments-table-container"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.3 }}
     >
-      <div className='assignments-table-header'>
-        <h2 className='assignments-table-title'>Class Assignments</h2>
-        <div className='assignments-search-container'>
-          <input 
-            type='text'
-            placeholder='Search Assignmnets'
+      <div className="assignments-table-header">
+        <h2 className="assignments-table-title">Class Assignments</h2>
+        <div className="assignments-search-container">
+          <input
+            type="text"
+            placeholder="Search Assignments"
             onChange={handleSearch}
             value={searchTerm}
-            className='assignments-search-input'
+            className="assignments-search-input"
           />
-
-          <Search size={20} className='assignments-search-icon' /> 
+          <Search size={20} className="assignments-search-icon" />
         </div>
       </div>
 
-      <div className='assignments-table-container-content'>
-        <table className='assignments-table'>
+      <div className="assignments-table-container-content">
+        <table className="assignments-table">
           <thead>
             <tr>
               <th>No</th>
@@ -103,73 +102,46 @@ export default function AssignmentsTable() {
                 <td>{assignment.title}</td>
                 <td>{assignment.dueDate}</td>
                 <td>
-                  <span className={`status-badge ${assignment.status.toLowerCase()}`}>{assignment.status}</span>
+                  <span className={`status-badge ${assignment.status.toLowerCase()}`}>
+                    {assignment.status}
+                  </span>
                 </td>
                 <td>{assignment.score}</td>
-                <td className='assignments-actions'>
-
-                {handledAssignments.map((assignment) => (
-                  <div key={assignment.id} className='actions-row'>
-                    <button 
-                      className={`assignment-btn ${assignment.submitted ? "submitted" : "submit"}`}
-                      onClick={() => {
-                        setHandledAssignments(
-                          handledAssignments.map((ass) => {
-                            if (ass.id === assignment.id) {
-                              return { ...ass, submitted: !assignment.submitted}
-                            }
-
-                            return ass
-                          })
-                        )
-                      }}
+                <td className="assignments-actions">
+                  <div className="actions-row">
+                    <button
+                      className={`assignment-btn ${
+                        handledAssignments[assignment.id]?.submitted ? "submitted" : "submit"
+                      }`}
+                      onClick={() => toggleAssignmentStatus(assignment.id, "submitted")}
                     >
-                      {assignment.submitted ? "submitted" : "submit"}
+                      {handledAssignments[assignment.id]?.submitted ? "Submitted" : "Submit"}
                     </button>
 
                     <button
-                      className={`download-btn ${assignment.downloaded ? "downloaded" : "download"}`}
-                      onClick={() => {
-                        setHandledAssignments(
-                          handledAssignments.map((ass) => {
-                            if (ass.id === assignment.id) {
-                              return { ...ass, downloaded: !assignment.downloaded}
-                            }
-                            
-                            return ass
-                          })
-                        )
-                      }}
+                      className={`download-btn ${
+                        handledAssignments[assignment.id]?.downloaded ? "downloaded" : "download"
+                      }`}
+                      onClick={() => toggleAssignmentStatus(assignment.id, "downloaded")}
                     >
-                      {assignment.downloaded ? "downloaded" : "download"}
+                      {handledAssignments[assignment.id]?.downloaded ? "Downloaded" : "Download"}
                     </button>
 
                     <button
-                      className={`completed-btn ${assignment.completed ? "completed" : "complete"}`}
-                      onClick={() => {
-                        setHandledAssignments(
-                          handledAssignments.map((ass) => {
-                            if (ass.id === assignment.id) {
-                              return { ...ass, completed: !assignment.completed }
-                            }
-                            
-                            return ass
-                          })
-                        )
-                      }}
+                      className={`completed-btn ${
+                        handledAssignments[assignment.id]?.completed ? "completed" : "complete"
+                      }`}
+                      onClick={() => toggleAssignmentStatus(assignment.id, "completed")}
                     >
-                      {assignment.completed ? "completed" : "complete"}
+                      {handledAssignments[assignment.id]?.completed ? "Completed" : "Complete"}
                     </button>
                   </div>
-                ))}
                 </td>
               </motion.tr>
             ))}
           </tbody>
         </table>
       </div>
-
-
     </motion.div>
-  )
+  );
 }

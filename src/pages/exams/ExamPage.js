@@ -5,9 +5,10 @@ import Header from '../../components/common/header/Header'
 import StatCard from '../../components/cards/statcard/StatCard'
 import { ClipboardCheck, ClipboardList, FileText, ListChecks } from 'lucide-react'
 import ExamsTable from '../../components/tables/examstable/ExamsTable'
-import GradeCard from '../../components/cards/gradecard/GradeCard'
+// import GradeCard from '../../components/cards/gradecard/GradeCard'
+// import Timer from '../../components/cards/timer/Timer'
 import ExamsGraph from '../../components/graphs/examsgraph/ExamsGraph'
-import Timer from '../../components/cards/timer/Timer'
+import StudentCalendar from '../../components/calendar/StudentCalendar'
 
 export default function ExamPage() {
 
@@ -34,10 +35,11 @@ export default function ExamPage() {
 
         <div className='exams-grid'>
           <ExamsGraph />
-          <div className='exams-grid-grade-and-timer'>
+          <StudentCalendar />
+          {/* <div className='exams-grid-grade-and-timer'>
             <GradeCard />
             <Timer targetDate="2025-06-27T00:00:00" />
-          </div>
+          </div> */}
         </div>
         
       </main>

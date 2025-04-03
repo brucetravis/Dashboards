@@ -30,12 +30,19 @@ export default function Timetable() {
         const term = e.target.value.toLowerCase().trim() // convert the search value to lowercase and trim any white spaces
         // Update the search function with the latest search value the user typed in
         setSearchTerm(term)
+        
+        
+        // if the search term is empty meaning that the search is cleared
+        if (term === "") {
+            setIsFiltered(timeTable_DATA) // Reset to original data when the search is cleared
+            return;
+        }
 
         // function to handle the filtering logic
-                                                // filter according to the day
         const filtered = timeTable_DATA.filter( (data) =>
+            // filter according to the day
             data.day.toLowerCase().includes(term) || // Check If any of the days matches the search term
-            data.periods.some((period) => period.toLowerCase().includes(term)) // Check If any of the subjects in the periods matches the seearch term
+            data.periods.some((period) => period.toLowerCase().includes(term)) // Check If any of the subjects in the periods array matches the search search term
         )
 
         // Update the filtering function with the filtered results
